@@ -4,6 +4,7 @@ static updateItemQuality(item) {
   if (isSulfuras(item)) {
     return
   }
+  decreaseSellin(item);
   
   if (!(isBrie(item)) && !(isTicket(item))) {
     decreaseQuality(item);
@@ -16,10 +17,13 @@ static updateItemQuality(item) {
     }
   }
   
-    item.sellIn -=1 ;
   
   pastSellBy(item);
 }
+}
+
+function decreaseSellin(item) {
+  item.sellIn -= 1;
 }
 
 function pastSellBy(item) {
@@ -33,10 +37,10 @@ if (item.sellIn < 0) {
 }
 
 function ticketValue(item) {
-if (item.sellIn < 11) {
+if (item.sellIn < 10) {
   increaseQuality(item);
 }
-if (item.sellIn < 6) {
+if (item.sellIn < 5) {
   increaseQuality(item);
 }
 }
