@@ -4,7 +4,7 @@
 
 
 This is the Gilded Rose kata in JavaScript with Jest. The objective is to refactor the nested if/else conditionals to make a clean and easily extendible program.
-My approach was to seperate out the logic for each of the items.
+My approach was to first write tests for each branch of the logic. Then I seperate out the conditional logic for each of the items. My current UpdateItemQuality class will be seperated out into a class for each item - when time permits!
 
 # The brief:
 
