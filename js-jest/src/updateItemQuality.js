@@ -27,13 +27,18 @@ function decreaseSellin(item) {
 }
 
 function pastSellBy(item) {
-if (item.sellIn < 0) {
-  if (isBrie(item)) {
-    increaseQuality(item);
-  } else {
-    !isTicket(item) ? decreaseQuality(item) : item.quality = 0;
-  }
-}
+  if (item.sellIn < 0) {
+    if (isBrie(item)) {
+      increaseQuality(item)
+      return
+    }
+    if (isTicket(item)) {
+      item.quality = 0
+      return
+    }
+    else
+      decreaseQuality(item)
+    }
 }
 
 function ticketValue(item) {
