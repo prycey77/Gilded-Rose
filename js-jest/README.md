@@ -1,6 +1,10 @@
-# Gilded Rose
+# Gilded Rose Tech Test
+#### Technologies: Ruby, Rspec
+### [Makers Academy](http://makers.tech) - Week 10 Solo Tech Test
+
 
 This is the Gilded Rose kata in JavaScript with Jest. The objective is to refactor the nested if/else conditionals to make a clean and easily extendible program.
+My approach was to seperate out the logic for each of the items.
 
 # The brief:
 
