@@ -1,45 +1,64 @@
-class UpdateItemQuality{
+class UpdateItemQuality {
 
-static updateItemQuality(item) {
-  if (isSulfuras(item)) {
-    return
-  }
-  decreaseSellin(item);
-  
-  if (isBrie(item) || isTicket(item)) {
-    if (item.quality < 50) {
-      item.quality ++;
-      if (isTicket(item)) {
-        ticketValue(item);
-      }
+  static updateItemQuality(item) {
+    if (isSulfuras(item)) {
+      return
     }
-  } else {
+    decreaseSellin(item);
+
+
+    if (isTicket(item)) {
+      updateTicket(item)
+      return
+    }
+  
+    if (isBrie(item)) {
+      if (item.quality < 50) {
+        item.quality++;
+        return
+      }
+      item.quality = 50
+      return
+    }
+    pastSellBy(item);
     decreaseQuality(item);
   }
-  
-  
-  pastSellBy(item);
-}
 }
 
-function decreaseSellin(item) {
-  item.sellIn -= 1;
-}
+    function updateTicket(item) {
+      if (item.sellIn < 0) {
+        item.quality = 0
+        return
+      }
+      if (item.quality < 50) {
+        item.quality++;
+        ticketValue(item);
+      } else {
+        item.quality = 50
+      }
 
-function pastSellBy(item) {
-  if (item.sellIn < 0) {
-    if (isBrie(item)) {
-      increaseQuality(item)
-      return
     }
-    if (isTicket(item)) {
-      item.quality = 0
-      return
+
+    function decreaseSellin(item) {
+      item.sellIn -= 1;
     }
-    else
-      decreaseQuality(item)
+
+    function pastSellBy(item) {
+      if (item.sellIn < 0) {
+        if (isBrie(item)) {
+          increaseQuality(item)
+          return
+        }
+        if (isTicket(item)) {
+          item.quality = 0
+          return
+        }
+        else
+          decreaseQuality(item)
+      }
     }
-}
+  
+
 
 function ticketValue(item) {
 if (item.sellIn < 10) {
