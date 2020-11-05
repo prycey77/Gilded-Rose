@@ -1,5 +1,5 @@
 # Gilded Rose Tech Test
-#### Technologies: Ruby, Rspec
+#### Technologies: JavaScript, Jest
 ### [Makers Academy](http://makers.tech) - Week 10 Solo Tech Test
 
 
