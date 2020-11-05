@@ -6,15 +6,15 @@ static updateItemQuality(item) {
   }
   decreaseSellin(item);
   
-  if (!(isBrie(item)) && !(isTicket(item))) {
-    decreaseQuality(item);
-  } else {
+  if (isBrie(item) || isTicket(item)) {
     if (item.quality < 50) {
       item.quality ++;
       if (isTicket(item)) {
         ticketValue(item);
       }
     }
+  } else {
+    decreaseQuality(item);
   }
   
   
@@ -28,10 +28,10 @@ function decreaseSellin(item) {
 
 function pastSellBy(item) {
 if (item.sellIn < 0) {
-  if (!isBrie(item)) {
-    !isTicket(item) ? decreaseQuality(item) : item.quality = 0;
-  } else {
+  if (isBrie(item)) {
     increaseQuality(item);
+  } else {
+    !isTicket(item) ? decreaseQuality(item) : item.quality = 0;
   }
 }
 }
