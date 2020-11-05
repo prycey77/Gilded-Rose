@@ -1,3 +1,5 @@
+const MAX = 50;
+
 class UpdateItemQuality {
 
   static updateItemQuality(item) {
@@ -13,37 +15,41 @@ class UpdateItemQuality {
     }
   
     if (isBrie(item)) {
-      if (item.quality < 50) {
-        item.quality++;
-        return
-      }
-      item.quality = 50
+      updateBrie(item)
       return
     }
     pastSellBy(item);
     decreaseQuality(item);
   }
 }
+function updateBrie(item) {
+  if (item.quality < MAX) {
+    item.quality++;
+    return
+  }
+  item.quality = MAX
+  return
+}
 
-    function updateTicket(item) {
+function updateTicket(item) {
       if (item.sellIn < 0) {
         item.quality = 0
         return
       }
-      if (item.quality < 50) {
+      if (item.quality < MAX) {
         item.quality++;
         ticketValue(item);
       } else {
-        item.quality = 50
+        item.quality = MAX
       }
 
     }
 
-    function decreaseSellin(item) {
+function decreaseSellin(item) {
       item.sellIn -= 1;
     }
 
-    function pastSellBy(item) {
+function pastSellBy(item) {
       if (item.sellIn < 0) {
         if (isBrie(item)) {
           increaseQuality(item)
@@ -57,7 +63,7 @@ class UpdateItemQuality {
           decreaseQuality(item)
       }
     }
-  
+
 
 
 function ticketValue(item) {
@@ -77,7 +83,7 @@ if (item.quality > 0) {
 }
 
 function increaseQuality(item) {
-if (item.quality < 50) {
+if (item.quality < MAX) {
   item.quality++;
 }
 }
